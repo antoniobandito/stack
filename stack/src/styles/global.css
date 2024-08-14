@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Gruppo&family=Nixie+One&family=Poiret+One&family=Rock+Salt&family=Rubik+Bubbles&family=Special+Elite&display=swap"
+);
+
+header {
+    font-family: "Gruppo", sans-serif;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+}
+
+body {
+    font-family: "Nixie One", system-ui;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .grid-item {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .grid-item:hover {
+    transform: scale(1.05);
+  }
+  
+  .grid-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
