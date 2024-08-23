@@ -13,6 +13,7 @@ interface PostData {
   likes?: string[];
   reposts?: string[];
   mediaURL?: string;
+  fileURL?: string;
   createdAt: any;
 }
 
@@ -33,26 +34,25 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white p-4">
-      <div className='max-w-4xl mx-auto grid grid-cols-1 sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
+    <div className="grid-container">
       {posts.map(post => (
-        <div key={post.id} className='w-full h-full overflow-hidden rounded-lg shadow-lg'>
-      <Post
-        key={post.id}
-        id={post.id}
-        authorId={post.authorId}
-        authorUsername={post.authorUsername}
-        content={post.content}
-        createdAt={post.createdAt}
-        likes={post.likes}
-        reposts={post.reposts}
-        mediaURL={post.mediaURL}
-      />
-      </div>
+        <div key={post.id} className="grid-item">
+          <Post
+            key={post.id}
+            id={post.id}
+            authorId={post.authorId}
+            authorUsername={post.authorUsername}
+            content={post.content}
+            createdAt={post.createdAt}
+            likes={post.likes}
+            reposts={post.reposts}
+            mediaURL={post.mediaURL}
+            fileURL={post.fileURL}
+          />
+        </div>
       ))}
+      <FloatingActionButton />
     </div>
-    <FloatingActionButton />
-  </div>
   );
 };
 

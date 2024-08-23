@@ -1,38 +1,154 @@
-@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Gruppo&family=Nixie+One&family=Poiret+One&family=Rock+Salt&family=Rubik+Bubbles&family=Special+Elite&display=swap"
-);
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=Gruppo&family=Nixie+One&family=Poiret+One&family=Rock+Salt&family=Rubik+Bubbles&family=Special+Elite&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 header {
     font-family: "Gruppo", sans-serif;
     width: 100%;
-    align-items: center;
-    justify-content: center;
-
+    text-align: center;
+    padding: 20px;
+    background-color: #fafafa;
 }
 
 body {
     font-family: "Nixie One", system-ui;
+    background-color: #fafafa;
+    margin: 0;
+    padding: 0;
+}
+
+.media-preview {
+    max-width: 100%;
+    max-height: 300px;
+    object-fit: contain;
 }
 
 .grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 16px;
-  }
-  
-  .grid-item {
-    border-radius: 8px;
+    gap: 10px; /* Consistent spacing */
+    padding: 10px;
+    grid-auto-flow: row dense;
+}
+
+/* Adjust the grid item to shrink based on content */
+.grid-item {
+    background: #fafafa;
+    padding: 5px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .grid-item:hover {
-    transform: scale(1.05);
-  }
-  
-  .grid-item img {
+    border: 1px solid #eaeaea;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    
+}
+
+/* Text post specific styling */
+.text-post {
+    grid-column: span 2;
+}
+
+/* Ensure images occupy full width */
+.grid-item img {
     width: 100%;
     height: auto;
     object-fit: cover;
-  }
+    margin-bottom: 10px;
+}
+
+/* Text post formatting */
+.grid-item.text-post {
+    height: auto; /* Ensure text posts resize correctly */
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 0;
+}
+
+/* Style for media posts with conditional media */
+.grid-item.media-post img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 0;
+}
+
+/* Adjust flexbox properties for dynamic resizing */
+.grid-item .content {
+    flex-grow: 1; /* Let content grow to fill space */
+}
+
+/* Interaction buttons spacing cleanup */
+.grid-item .flex.items-center {
+    margin: 0;
+    padding: 0; /* Eliminate unnecessary padding */
+}
+
+/* Interaction buttons */
+.grid-item button {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+.post-author {
+    font-weight: bold;
+    padding: 5px; /* Reduce padding */
+}
+
+.post-content {
+    padding: 5px;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-top: 1px solid #e0e0e0;
+}
+
+/* Floating Action Button */
+.floating-action-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.floating-action-button:hover {
+    background-color: #d2d2d2;
+}
+
+/* Responsive grid layout adjustments */
+@media (min-width: 640px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+}
